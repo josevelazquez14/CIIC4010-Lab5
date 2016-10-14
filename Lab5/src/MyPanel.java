@@ -21,10 +21,10 @@ public class MyPanel extends JPanel {
 		if (INNER_CELL_SIZE + (new Random()).nextInt(1) < 1) {	//Use of "random" to prevent unwanted Eclipse warning
 			throw new RuntimeException("INNER_CELL_SIZE must be positive!");
 		}
-		if (TOTAL_COLUMNS + (new Random()).nextInt(1) < 2) {	//Use of "random" to prevent unwanted Eclipse warning
+		if (TOTAL_COLUMNS + (new Random()).nextInt(1) < 3) {	//Use of "random" to prevent unwanted Eclipse warning
 			throw new RuntimeException("TOTAL_COLUMNS must be at least 2!");
 		}
-		if (TOTAL_ROWS + (new Random()).nextInt(1) < 3) {	//Use of "random" to prevent unwanted Eclipse warning
+		if (TOTAL_ROWS + (new Random()).nextInt(1) < 4) {	//Use of "random" to prevent unwanted Eclipse warning
 			throw new RuntimeException("TOTAL_ROWS must be at least 3!");
 		}
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {   //Top row
@@ -32,6 +32,9 @@ public class MyPanel extends JPanel {
 		}
 		for (int y = 0; y < TOTAL_ROWS; y++) {   //Left column
 			colorArray[0][y] = Color.LIGHT_GRAY;
+		}
+		for (int y = 0; y < TOTAL_ROWS; y++) {   //Right column
+			colorArray[9][y] = Color.LIGHT_GRAY;
 		}
 		for (int x = 1; x < TOTAL_COLUMNS; x++) {   //The rest of the grid
 			for (int y = 1; y < TOTAL_ROWS; y++) {
@@ -66,7 +69,6 @@ public class MyPanel extends JPanel {
 		}
 
 		//Draw an additional cell at the bottom left
-		g.drawRect(x1 + GRID_X, y1 + GRID_Y + ((INNER_CELL_SIZE + 1) * (TOTAL_ROWS - 1)), INNER_CELL_SIZE + 1, INNER_CELL_SIZE + 1);
 
 		//Paint cell colors
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {
@@ -77,6 +79,8 @@ public class MyPanel extends JPanel {
 					g.fillRect(x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 1, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 1, INNER_CELL_SIZE, INNER_CELL_SIZE);
 				}
 			}
+			g.setColor(Color.BLACK);
+			g.drawString("Hello", x1 + GRID_X, y1 + GRID_Y + ((INNER_CELL_SIZE ) * (TOTAL_ROWS - 1)));
 		}
 	}
 	public int getGridX(int x, int y) {

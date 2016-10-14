@@ -1,13 +1,9 @@
 import java.awt.Color;
-import java.awt.Graphics;
-import java.lang.Object;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.Insets;
-import java.awt.Paint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-
 import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
@@ -106,7 +102,6 @@ public void mineGenerator()
 			int gridY = myPanel.getGridY(x, y);
 			
 			
-			
 			if ((myPanel.mouseDownGridX == -1) || (myPanel.mouseDownGridY == -1)) {
 				//Had pressed outside
 				//Do nothing
@@ -124,13 +119,85 @@ public void mineGenerator()
 							//On the left column and on the top row... do nothing
 						} else {
 							//On the grid other than on the left column and on the top row:
+						
+							
+							
+							for(int i=0; i<10; i++)
+								
+							{
+								for(int j=0; j<10; j++)
+								{
+									if(position[i][j] == "bomb")
+									{
+										System.out.println("Bomb 1 at position [j++][i++]");
+									}
+								}
+							}
+							
 							
 							if(myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY].equals(Color.WHITE))
 							{
 								
 								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.GRAY;
-																														
+								if((myPanel.mouseDownGridX)<9)
+								{
+									if(myPanel.colorArray[myPanel.mouseDownGridX+1][myPanel.mouseDownGridY].equals(Color.BLACK)) 								
+									{ 
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									}
+								}
 								
+								if(myPanel.colorArray[myPanel.mouseDownGridX-1][myPanel.mouseDownGridY].equals(Color.BLACK)) 								
+								{
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									
+								}
+								
+								if((myPanel.mouseDownGridX)<9)
+								{	
+									if(myPanel.colorArray[myPanel.mouseDownGridX+1][myPanel.mouseDownGridY+1].equals(Color.BLACK))
+									{ 
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									}
+								}
+								
+								if(myPanel.colorArray[myPanel.mouseDownGridX-1][myPanel.mouseDownGridY+1].equals(Color.BLACK))
+								{
+									
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									
+								}
+								
+								if(myPanel.colorArray[myPanel.mouseDownGridX-1][myPanel.mouseDownGridY-1].equals(Color.BLACK)) 								
+								{
+									
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									
+								}
+							if((myPanel.mouseDownGridX)<9)
+								{	
+									if(myPanel.colorArray[myPanel.mouseDownGridX+1][myPanel.mouseDownGridY-1].equals(Color.BLACK)) 								
+									{ //bug in the last col
+									
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									}
+								}	
+								
+								if(myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY+1].equals(Color.BLACK)) 								
+								{
+									if((myPanel.mouseDownGridX+1)<10)
+									{
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									}
+								}
+								
+								if(myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY-1].equals(Color.BLACK)) 								
+								{	
+									if((myPanel.mouseDownGridX+1)<=9)
+									{
+										myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.YELLOW;
+									}
+								}
 							}
 							
 							

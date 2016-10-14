@@ -1,9 +1,10 @@
 import java.awt.Color;
+import java.lang.reflect.Array;
 import java.util.Random;
 
 import javax.swing.JFrame;
 
-public class Main {
+public class Main   {
 	public static void main(String[] args) {
 		JFrame myFrame = new JFrame("Minesweeper");
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -20,13 +21,21 @@ public class Main {
 		
 		int numberMines =0;
 		Random generator = new Random();
+		 
+		String[][] position = new String[10][10];
+		
 		while(numberMines<10) //create the mines
 		{				
 			int col = generator.nextInt(9);
 			int row = generator.nextInt(9);
 			if(col>0 && row>0 && numberMines<10 && myPanel.colorArray[col][row].equals(Color.WHITE))
 			{
-				myPanel.colorArray[col][row]=Color.BLACK;
+				//myPanel.colorArray[col][row]=Color.BLACK;
+				
+				
+				
+				position[col][row]="bomb";
+				
 				numberMines++;
 			}
 		
