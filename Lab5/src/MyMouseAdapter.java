@@ -129,10 +129,7 @@ public void mineGenerator()
 							{
 								
 								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY] = Color.GRAY;
-								
-								
-								myPanel.colorArray[myPanel.mouseDownGridX][myPanel.mouseDownGridY].toString();
-								
+																														
 								
 							}
 							
